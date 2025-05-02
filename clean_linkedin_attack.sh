@@ -2,6 +2,7 @@
 # LinkedIn Hijack Scanner & Cleaner
 # Cross-platform scanner for LinkedIn account-takeover attacks
 # Author: Jacek Trefon
+# Updated: Fixed macOS compatibility issues
 
 # Avoid using set -o nounset with arrays in older bash versions
 set -o pipefail  # Return status of the last command in a pipeline that failed
