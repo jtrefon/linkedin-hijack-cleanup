@@ -163,19 +163,30 @@ function Find-MaliciousExtensions {
 }
 
 function Get-TempDirectories {
-    $tempDirs = @(
-        "$Env:TEMP",
-        "$Env:APPDATA",
-        "$Env:LOCALAPPDATA\Temp",
-        "$Env:USERPROFILE\Downloads",
-        "$Env:PROGRAMDATA\Temp"
+    # Instead of targeting specific directories, scan the entire user folder
+    # plus a few critical system locations where attackers commonly drop files
+    $scanDirs = @(
+        "$Env:USERPROFILE",           # Entire user profile directory
+        "$Env:PROGRAMDATA",           # Program Data
+        "$Env:ALLUSERSPROFILE",       # All Users Profile
+        "$Env:PUBLIC"                 # Public folder
     )
     
-    # Filter to only directories that exist
-    $existingDirs = $tempDirs | Where-Object { Test-Path -Path $_ }
+    # Add known high-risk directories to prioritize scanning
+    $highRiskDirs = @(
+        "$Env:TEMP",
+        "$Env:APPDATA",
+        "$Env:LOCALAPPDATA",
+        "$Env:USERPROFILE\Downloads",
+        "$Env:USERPROFILE\Documents"
+    )
+    
+    # Combine and filter to only directories that exist
+    $allDirs = $scanDirs + $highRiskDirs
+    $existingDirs = $allDirs | Where-Object { Test-Path -Path $_ } | Select-Object -Unique
     
     foreach ($dir in $existingDirs) {
-        Write-VerboseLog "Found temp directory: $dir"
+        Write-VerboseLog "Adding directory to scan: $dir"
     }
     
     return $existingDirs
