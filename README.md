@@ -13,7 +13,7 @@ Each script **only touches files in your user account**, offers a **"report-only
 ---
 
 ## ⚠️ Legal Notice & Disclaimer ⚠️
-> I, the author, am **NOT responsible** for any direct, indirect, incidental or consequential damage arising from the use—or misuse—of these scripts.  
+> I, the author, am **NOT responsible** for any direct, indirect, incidental or consequential damage arising from the use or misuse of these scripts.  
 > They are provided **"AS IS", in good faith**, for the sole purpose of helping fellow victims recover from this specific attack campaign.  
 > **USE AT YOUR OWN RISK.**  
 > Always keep current system backups and review the code before you run it.
@@ -73,7 +73,7 @@ No registry edits, no system files, no elevation required (except PowerShell mus
 
 ## 4.  Updating the IoC Lists
 
-The arrays at the top of each script—`MAL_EXT` and `STEALER`—are plain text.  
+The arrays at the top of each script `MAL_EXT` and `STEALER` are plain text.  
 If new malicious extension IDs or file names surface:
 
 1. Open the script in any text editor.  

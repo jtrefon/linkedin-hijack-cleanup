@@ -44,7 +44,7 @@ STEALER=(
 )
 
 # Timeframe to check (in days)
-DAYS=30
+DAYS=90
 
 # -------------------------------
 # Function definitions
